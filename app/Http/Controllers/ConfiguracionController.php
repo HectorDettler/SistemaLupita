@@ -42,17 +42,38 @@ class ConfiguracionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Configuracion $configuracion)
+    public function edit()
     {
-        //
+        
+        $configuracion = Configuracion::first();  
+
+        
+        return view('admin.configuraciones.edit', compact('configuracion'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Configuracion $configuracion)
+    public function update(Request $request, $id)
     {
-        //
+        // Validar los datos
+        $request->validate([
+            'nombre_empresa' => 'required|string|max:255',
+            'direccion_empresa' => 'required|string|max:255',
+            'correo_empresa' => 'required|email|max:255',
+            'telefono_empresa' => 'required|string|max:255',
+        ]);
+
+        // Obtener la configuración por su ID
+        $configuracion = Configuracion::findOrFail($id);
+
+        // Actualizar los campos
+        $configuracion->update($request->all());
+
+        // Redirigir al usuario con un mensaje de éxito
+        return redirect()->route('admin.configuracion.edit')
+        ->with('success', 'Configuración actualizada correctamente');
+
     }
 
     /**

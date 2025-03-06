@@ -15,6 +15,9 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Estilos personalizados -->
+ 
 </head>
 <body>
     <div id="app">

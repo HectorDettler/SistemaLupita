@@ -16,7 +16,11 @@
              width="{{ config('adminlte.preloader.img.width', 60) }}"
              height="{{ config('adminlte.preloader.img.height', 60) }}"
              style="animation-iteration-count:infinite;">
-
+        
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="{{ asset('vendor/adminlte/dist/img/loading.png') }}" alt="Preloader Image" width="60" height="60">
+            <p style="color: black; font-size: 18px; margin-top: 10px;">Cargando...</p>
+        </div>
     @endif
 
 </div>
