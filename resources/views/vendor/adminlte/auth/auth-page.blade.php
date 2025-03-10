@@ -94,11 +94,11 @@
     
         {{-- Logo --}}
         <center>
-            <img src="{{ asset('/images/logo.jpg') }}" alt="Lupita Logo" class="custom-logo">
+            <img src="{{ asset('/images/logo-recortado.jpg') }}" alt="Lupita Logo" class="custom-logo">
         </center>
 
         <div class="company-name">
-            <p>Lupita Almacen de mujeres</p> 
+            <p>Almacen de mujeres</p> 
         </div>
         
         {{-- Card Box --}}

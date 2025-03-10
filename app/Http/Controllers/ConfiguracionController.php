@@ -72,7 +72,7 @@ class ConfiguracionController extends Controller
 
         // Redirigir al usuario con un mensaje de éxito
         return redirect()->route('admin.configuracion.edit')
-        ->with('success', 'Configuración actualizada correctamente');
+        ->with('mensaje', 'Configuración actualizada correctamente');
 
     }
 

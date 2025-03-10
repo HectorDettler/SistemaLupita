@@ -98,5 +98,7 @@
 
 
 @section('js')
-    {{-- Agregar scripts personalizados aquí si es necesario --}}
+   
+
+    
 @stop

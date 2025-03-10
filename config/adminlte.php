@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => 'Sistema Lupita',
-    'logo_img' => 'vendor/adminlte/dist/img/lupita.png',
+    'logo_img' => 'vendor/adminlte/dist/img/lupita.jpg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -332,50 +332,35 @@ return [
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
-        ],
+
         ['header' => 'GESTION ROLES Y USUARIO'],
 
         [
             'text' => 'Usuarios',
             'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-users',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Usuarios',
+                    'url' => 'admin/usuarios',
+                    
+                ],
+               
+            ],
+        ],
+        [
+            'text' => 'Roles',
+            'icon' => 'fas fa-fw fa-user-check',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Roles',
+                    'url' => 'admin/roles',
+                    
+                ],
+               
+            ],
         ],
         [
             'text' => 'Configuracion',
@@ -480,12 +465,18 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js',
+                ],
+
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css',
                 ],
             ],
         ],
