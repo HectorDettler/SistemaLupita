@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Roles')
+@section('title', 'Editar Categorias')
 
 @section('content_header')
-    <h1>Editar Rol</h1>
+    <h1>Editar Categoria</h1>
     <hr>
 @stop
 
@@ -17,14 +17,14 @@
 
                 <div class="card-body">
 
-                    <form action="{{ url('/admin/roles',$role->id) }}" method="post">
+                    <form action="{{ url('/admin/categorias',$categoria->id) }}" method="post">
                         @csrf
                         @method ('PUT')
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="name">Nombre del Rol</label>
-                                    <input type="text" class="form-control" value="{{ $role->name}}" name="name" required>
+                                    <label for="name">Nombre de la Categoria</label>
+                                    <input type="text" class="form-control" value="{{ $categoria->name}}" name="name" required>
                                     @error('name')
                                     <small style"">{{ $message }}</small>
                                     @enderror

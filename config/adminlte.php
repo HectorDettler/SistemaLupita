@@ -306,10 +306,7 @@ return [
             'text' => 'search',
             'topnav_right' => true,
         ],
-        [
-            'type' => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
+       
 
         // Sidebar items:
       
@@ -317,7 +314,46 @@ return [
         [
             'text' => 'Productos',
             'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-box',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Productos',
+                    'url' => 'admin/productos',
+                    
+                ],
+               
+            ],
+        ],
+
+        [
+            'text' => 'Marcas',
+            'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-tags',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Marcas',
+                    'url' => 'admin/marcas',
+                    
+                ],
+               
+            ],
+        ],
+
+        [
+            'text' => 'Categorias',
+            'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-tags',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Categorias',
+                    'url' => 'admin/categorias',
+                    
+                ],
+               
+            ],
         ],
 
 

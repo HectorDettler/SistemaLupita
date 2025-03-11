@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-
+@section('title', 'Menu de Usuarios')
 
 @section('content_header')
     <h1>Listado de Usuarios</h1>
@@ -25,6 +25,7 @@
                             <tr>
                                 <th scope="col" style="text-align:center">Nro</th>
                                 <th scope="col">Nombre del Usuario</th>
+                                <th scope="col">Rol</th>
                                 <th scope="col">Email</th>
                                 <th scope="col" style="text-align:center">Acciones</th>
                                 
@@ -36,23 +37,22 @@
                                 <tr>
                                     <td style="text-align:center">{{ $contador++ }}</td>
                                     <td>{{ $usuario->name }}</td>
+                                    <td>{{ $usuario->roles->pluck('name')->implode(', ') }}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td style="text-align:center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
 
                                             <a href="{{ url('/admin/usuarios/'.$usuario->id) }}" class="btn btn-primary btn-sm" ><i class="fas fa-eye" ></i></a>
                                             <a href="{{ url('/admin/usuarios/'.$usuario->id.'/edit') }}" class="btn btn-success btn-sm" ><i class="fas fa-pencil" ></i></a>
-                                            <form action="{{ url('/admin/usuarios', $usuario->id) }}" method="post" id="miFormulario{{ $usuario->id }}">
+                                            <form action="{{ url('/admin/usuarios', $usuario->id) }}" method="post" onclick="preguntar{{$usuario->id}}(event)"  id="miFormulario{{ $usuario->id }}">
                                                 @csrf
                                                 @method ('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px" data-usuario-id="{{ $usuario->id }}"  onclick="preguntar(event)"><i class="fas fa-trash"></i></button>
+                                                <button type="submit" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px" ><i class="fas fa-trash"></i></button>
                                             </form>
                                             <script>
 
-                                                function preguntar(event){
+                                                function preguntar{{$usuario->id}}(event){
                                                     event.preventDefault();
-                                                    var usuarioId = $(event.target).data('usuario-id');
-                                                    
                                                     
                                                     Swal.fire({
                                                         title:'¿Desea elminar este registro?',
