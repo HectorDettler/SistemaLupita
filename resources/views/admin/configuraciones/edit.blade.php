@@ -73,7 +73,7 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <button type="submit" class="btn btn-success btn-block">Actualizar Datos</button>
+                                        <button type="submit" class="btn bg-gradient-success btn-block">Actualizar Datos</button>
                                     </div>
                                 </div>
                             </div>

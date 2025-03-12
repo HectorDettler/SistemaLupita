@@ -1,20 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'Menu de Usuarios')
+@section('title', 'Menu de Productos')
 
 @section('content_header')
-    <h1>Listado de Usuarios</h1>
+    <h1>Lista de Productos</h1>
     <hr>
 @stop
 
 @section('content')
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Usuarios Registrados </h3>
+                    <h3 class="card-title">Productos Registrados </h3>
                     <div class="card-tools">
-                        <a href="{{ url('/admin/usuarios/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Agregar un Usuario</a>
+                        <a href="{{ url('/admin/productos/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Agregar un Producto</a>
 
                     </div>
                 </div>
@@ -24,35 +24,49 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" style="text-align:center">Nro</th>
-                                <th scope="col">Nombre del Usuario</th>
-                                <th scope="col">Rol</th>
-                                <th scope="col">Email</th>
+                                <th scope="col" style="text-align:center">Nombre</th>
+                                <th scope="col" style="text-align:center">Codigo</th>
+                                <th scope="col" style="text-align:center">Stock</th>
+                                <th scope="col" style="text-align:center">Precio de Venta</th>
+                                <th scope="col" style="text-align:center">Fecha de Vencimiento</th>
+                                <th scope="col" style="text-align:center">Imagen</th>
+
+
+
                                 <th scope="col" style="text-align:center">Acciones</th>
                                 
                             </tr>  
                         </thead>
                         <tbody>
                             <?php $contador=1; ?>
-                            @foreach ( $usuarios as $usuario)
+                            @foreach ( $productos as $producto)
                                 <tr>
-                                    <td style="text-align:center">{{ $contador++ }}</td>
-                                    <td>{{ $usuario->name }}</td>
-                                    <td>{{ $usuario->roles->pluck('name')->implode(', ') }}</td>
-                                    <td>{{ $usuario->email }}</td>
+                                    <td style="text-align:center; vertical-align:middle">{{ $contador++ }}</td>
+                                    <td style="text-align:center; vertical-align:middle">{{ $producto->nombre_producto }}</td>
+                                    <td style="text-align:center; vertical-align:middle">{{ $producto->codigo_producto }}</td>
+                                    <td style="text-align:center; vertical-align:middle">{{ $producto->stock_producto }}</td>
+                                    <td style="text-align:center; vertical-align:middle">{{ $producto->precio_venta_producto }}</td>
+                                    <td style="text-align:center; vertical-align:middle">{{ $producto->fecha_vencimiento_producto }}</td>
                                     <td style="text-align:center">
-                                        <div class="btn-group" role="group" aria-label="Basic example">
 
-                                            <a href="{{ url('/admin/usuarios/'.$usuario->id) }}" class="btn bg-gradient-primary btn-sm" ><i class="fas fa-eye" ></i></a>
-                                            <a href="{{ url('/admin/usuarios/'.$usuario->id.'/edit') }}" class="btn bg-gradient-success btn-sm" ><i class="fas fa-pencil" ></i></a>
-                                            <form action="{{ url('/admin/usuarios', $usuario->id) }}" method="post" onclick="preguntar{{$usuario->id}}(event)"  id="miFormulario{{ $usuario->id }}">
+                                        <img src="{{ asset('storage/'.$producto->imagen_producto) }}" width="100px" alt="imagen">
+
+                                    </td>
+
+                                    <td style="text-align:center; vertical-align:middle">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="{{ url('/admin/productos/'.$producto->id) }}" class="btn bg-gradient-primary btn-sm" ><i class="fas fa-eye" ></i></a>
+                                            <a href="{{ url('/admin/productos/'.$producto->id.'/edit') }}" class="btn bg-gradient-success btn-sm" ><i class="fas fa-pencil" ></i></a>
+                                            <form action="{{ url('/admin/productos',$producto->id) }}" method="post" onclick="preguntar{{$producto->id}}(event)" id="miFormulario{{ $producto->id }}">
                                                 @csrf
                                                 @method ('DELETE')
-                                                <button type="submit" class="btn bg-gradient-danger btn-sm" style="border-radius: 0px 5px 5px 0px" ><i class="fas fa-trash"></i></button>
+                                                <button type="submit" class="btn bg-gradient-danger btn-sm" style="border-radius: 0px 5px 5px 0px"  ><i class="fas fa-trash"></i></button>
                                             </form>
                                             <script>
 
-                                                function preguntar{{$usuario->id}}(event){
+                                                function preguntar{{$producto->id}}(event){
                                                     event.preventDefault();
+                                                    
                                                     
                                                     Swal.fire({
                                                         title:'¿Desea elminar este registro?',
@@ -65,8 +79,7 @@
                                                         denyButtonText:'Cancelar'
                                                     }).then((result)=>{
                                                         if(result.isConfirmed){
-                                                            var form = $('#miFormulario{{$usuario->id}}');
-
+                                                            var form= $('#miFormulario{{$producto->id}}');
                                                             form.submit();
                                                         }
 

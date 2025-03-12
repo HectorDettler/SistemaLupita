@@ -14,7 +14,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Categorias Registradas </h3>
                     <div class="card-tools">
-                        <a href="{{ url('/admin/categorias/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Agregar un Categoria</a>
+                        <a href="{{ url('/admin/categorias/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Agregar un Categoria</a>
 
                     </div>
                 </div>
@@ -37,11 +37,11 @@
                                     <td style="text-align:center">{{ $categoria->name }}</td>
                                     <td style="text-align:center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ url('/admin/categorias/'.$categoria->id.'/edit') }}" class="btn btn-success btn-sm" ><i class="fas fa-pencil" ></i></a>
+                                            <a href="{{ url('/admin/categorias/'.$categoria->id.'/edit') }}" class="btn bg-gradient-success btn-sm" ><i class="fas fa-pencil" ></i></a>
                                             <form action="{{ url('/admin/categorias',$categoria->id) }}" method="post" onclick="preguntar{{$categoria->id}}(event)" id="miFormulario{{ $categoria->id }}">
                                                 @csrf
                                                 @method ('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"  ><i class="fas fa-trash"></i></button>
+                                                <button type="submit" class="btn bg-gradient-danger btn-sm" style="border-radius: 0px 5px 5px 0px"  ><i class="fas fa-trash"></i></button>
                                             </form>
                                             <script>
 

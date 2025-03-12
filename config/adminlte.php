@@ -306,6 +306,12 @@ return [
             'text' => 'search',
             'topnav_right' => true,
         ],
+
+        [
+            'type' => 'nav-link',
+            'icon' => 'fas fa-fw fa-box',
+            
+        ],
        
 
         // Sidebar items:
@@ -313,7 +319,7 @@ return [
 
         [
             'text' => 'Productos',
-            'url' => 'admin/settings',
+            'url' => 'admin/productos',
             'icon' => 'fas fa-fw fa-box',
             'classes'=>'bg-black text-white',
             'submenu' => [
@@ -367,6 +373,11 @@ return [
             'text' => 'Venta',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Registros Generales',
+            'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-list',
         ],
 
         ['header' => 'GESTION ROLES Y USUARIO'],

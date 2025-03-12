@@ -36,16 +36,15 @@
                                 <div class="form-group">
                                 <label for="categorias">Categorías:</label>
                                 <div class="form-group">
-                                    @foreach ($categorias as $categoria)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="categorias[]" value="{{ $categoria->id }}" id="categoria{{ $categoria->id }}">
-                                            <label class="form-check-label" for="categoria{{ $categoria->id }}">
-                                                {{ $categoria->name }}
-                                            </label>
-                                        </div>
+                                @foreach ($categorias as $categoria)
+                                
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" type="checkbox" name="categorias[]" value="{{ $categoria->id }}" id="categoria{{ $categoria->id }}" 
+                                        @if(isset($marca) && $marca->categorias->contains($categoria->id)) checked @endif>
+                                        <label for="categoria{{ $categoria->id }}" class="custom-control-label">{{ $categoria->name }}</label>
+                                    </div>
 
-                                        
-                                    @endforeach
+                                @endforeach
                                 </div>
 
                                 </div>
@@ -57,7 +56,7 @@
 
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Registrar</button>
+                                        <button type="submit" class="btn bg-gradient-primary"><i class="fas fa-save"></i> Registrar</button>
                                     </div>
                             </div>
 

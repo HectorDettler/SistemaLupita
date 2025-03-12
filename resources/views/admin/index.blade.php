@@ -13,14 +13,14 @@
                 <!-- small box -->
                 <div class="small-box bg-warning zoomP">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{ $total_productos }}</h3>
 
                         <p><b>Productos Registrados</b></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-box"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ url('/admin/productos')}}" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -28,14 +28,14 @@
                 <!-- small box -->
                 <div class="small-box bg-info zoomP">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{ $total_marcas }}</h3>
 
                         <p><b>Marcas Registradas</b></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-tags"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ url('/admin/marcas')}}" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
             </div>
 
@@ -43,14 +43,14 @@
                 <!-- small box -->
                 <div class="small-box bg-success zoomP">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{ $total_categorias }}</h3>
 
                         <p><b>Categorias Registradas</b></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-tags"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ url('/admin/categorias')}}" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             

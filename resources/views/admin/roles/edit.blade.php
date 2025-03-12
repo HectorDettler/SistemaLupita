@@ -36,7 +36,7 @@
 
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar Cambios</button>
+                                        <button type="submit" class="btn bg-gradient-success"><i class="fas fa-save"></i> Guardar Cambios</button>
                                     </div>
                             </div>
 

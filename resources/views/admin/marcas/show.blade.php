@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Detalles Marcas')
 
 @section('content_header')
-    <h1>Usuarios</h1>
+    <h1>Detalles</h1>
     <hr>
 @stop
 
@@ -12,7 +12,7 @@
         <div class="col-md-9">
             <div class="card card-outline card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Datos del usuario </h3>
+                    <h3 class="card-title">Datos de la marca </h3>
                 </div>
 
                 <div class="card-body">
@@ -27,28 +27,23 @@
                                 </div>
                             </div>
 
-                            
-
-                            
-
-                        </div>
-
-                        <div class="row">
-
-
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="email">Disponible en estas Marcas</label>
-                                    <p>Aca mostrar las marcas Relacionadas</p>
+                                    <label for="email">Disponible en estas Categorias</label>
+                                    <ul>
+                                        @foreach ($marca->categorias as $categoria)
+                                            <li>{{ $categoria->name }}</li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                             </div>
 
+                            
 
+                            
 
                         </div>
-
-
-                       
+   
 
                         <hr>
 
@@ -56,7 +51,7 @@
 
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <a href="{{ url('/admin/usuarios') }}" class="btn btn-secondary"> Volver</a>
+                                        <a href="{{ url('/admin/marcas') }}" class="btn bg-gradient-secondary"> Volver</a>
                                         
                                     </div>
                             </div>

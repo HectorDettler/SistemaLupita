@@ -32,14 +32,14 @@ class MarcaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'categorias' => 'array' // Asegura que sea un array de categorías
+            'name' => 'required|string|unique:marcas,name',
+            'categorias' => 'array' 
         ]);
 
         $marca = Marca::create($request->only('name')); 
 
         if ($request->has('categorias')) {
-            $marca->categorias()->sync($request->categorias); // Relaciona la marca con las categorías seleccionadas
+            $marca->categorias()->sync($request->categorias); 
         }
     
         return redirect()->route('admin.marcas.index')
@@ -51,24 +51,42 @@ class MarcaController extends Controller
      */
     public function show( $id)
     {
-        $marca=Marca::find($id);
+        $marca = Marca::with('categorias')->findOrFail($id);
         return view("admin.marcas.show",compact("marca"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Marca $marca)
+    public function edit( $id)
     {
-        //
+        $categorias = Categoria::all();
+        $marca = Marca::with('categorias')->findOrFail($id);
+        return view("admin.marcas.edit",compact("marca" , "categorias"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Marca $marca)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|unique:marcas,name,' . $id,
+            'categorias' => 'array'
+        ]);
+        
+        
+        $marca = Marca::findOrFail($id);
+
+        
+        $marca->update([
+            'name' => $request->name,
+        ]);
+
+        
+        $marca->categorias()->sync($request->categorias ?? []);
+
+        return redirect()->route('admin.marcas.index')->with('mensaje', 'Marca actualizada correctamente');
     }
 
     /**

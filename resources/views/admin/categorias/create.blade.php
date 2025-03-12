@@ -35,7 +35,7 @@
 
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Registrar</button>
+                                        <button type="submit" class="btn bg-gradient-primary"><i class="fas fa-save"></i> Registrar</button>
                                     </div>
                             </div>
 

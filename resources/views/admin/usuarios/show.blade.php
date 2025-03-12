@@ -65,7 +65,7 @@
 
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <a href="{{ url('/admin/usuarios') }}" class="btn btn-secondary"> Volver</a>
+                                        <a href="{{ url('/admin/usuarios') }}" class="btn bg-gradient-secondary"> Volver</a>
                                         
                                     </div>
                             </div>

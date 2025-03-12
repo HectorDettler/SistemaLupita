@@ -87,6 +87,7 @@ class UsuarioController extends Controller
         $request->validate([
             'name'=> 'required',
             'email'=> 'required|unique:users,email,'.$id,
+            'password'=> 'confirmed',
 
         ]);
 

@@ -90,8 +90,8 @@
 
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <a href="{{ url('/admin/usuarios') }}" class="btn btn-secondary"> Cancelar</a>
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar Cambios</button>
+                                        <a href="{{ url('/admin/usuarios') }}" class="btn bg-gradient-secondary"> Cancelar</a>
+                                        <button type="submit" class="btn bg-gradient-success"><i class="fas fa-save"></i> Guardar Cambios</button>
                                     </div>
                             </div>
 
