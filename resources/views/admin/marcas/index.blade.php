@@ -51,7 +51,7 @@
                                                     var marcaId = $(event.target).data('marca-id');
                                                     
                                                     Swal.fire({
-                                                        title:'¿Desea elminar este registro?',
+                                                        title:'¿Desea eliminar este registro?Al hacerlo eliminara los productos asociados a este',
                                                         text:'',
                                                         icon:'question',
                                                         showDenyButton: true,

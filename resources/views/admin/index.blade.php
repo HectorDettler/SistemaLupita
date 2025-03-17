@@ -53,10 +53,6 @@
                     <a href="{{ url('/admin/categorias')}}" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            
-        </div>
-
-        <div class="row">
 
             <div class="col-lg-3 col-6">
                 <!-- small box -->
@@ -72,10 +68,10 @@
                     <a href="{{ url('/admin/usuarios')}}" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-
-            
             
         </div>
+
+        
 
         
 @stop

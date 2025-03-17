@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TiendaController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -77,5 +78,9 @@ Route::get('/admin/productos/{id}/edit', [App\Http\Controllers\ProductoControlle
 Route::put('/admin/productos/{id}', [App\Http\Controllers\ProductoController::class, 'update'])->name('admin.productos.update')->middleware('auth');
 Route::delete('/admin/productos/{id}', [App\Http\Controllers\ProductoController::class, 'destroy'])->name('admin.productos.destroy')->middleware('auth');
 
-
 Route::get('/admin/get-marcas/{categoriaId}', [AdminController::class, 'getMarcas']);
+
+
+
+Route::get('/', [TiendaController::class, 'index'])->name('tienda.index');
+Route::get('/productos/{id}', [TiendaController::class, 'show'])->name('tienda.detalle');
