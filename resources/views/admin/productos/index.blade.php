@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table table-striped table-bordered table-hover">
+                    <table id="tabla"class="table table-striped table-bordered table-hover">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" style="text-align:center">Nro</th>
@@ -110,4 +110,32 @@
 
 @section('js')
     <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+
+    <script>
+        $('#tabla').DataTable({
+
+            "pageLength":5,
+            "language":{
+                "emptyTable":"No hay informacion",
+                "info":"Mostrando _START_ a _END_ de _TOTAL_ Productos",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Productos",
+                "infofiltered":"(Filtrado de _MAX_ total Productos)",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Productos",
+                "infoPostFix":"",
+                "thousands":",",
+                "lengthMenu":"Mostrar _MENU_ Productos",
+                "loadingRecords":"Cargando...",
+                "processing":"Procesando...",
+                "search":"Buscador:",
+                "zeroRecords":"Sin resultados encontrados",
+                "paginate":{
+                    "first":"Primero",
+                    "last":"Ultimo",
+                    "next":"Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+
+        });
+    </script>
 @stop

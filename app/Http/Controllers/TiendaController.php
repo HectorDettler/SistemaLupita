@@ -22,7 +22,7 @@ class TiendaController extends Controller
     public function show($id)
     {
 
-        $productos = Producto::all();
+        $productos = Producto::findOrFail($id);
         return view('tienda.detalle', compact('productos'));
     }
 

@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -375,16 +375,23 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'Registros Generales',
-            'url' => 'admin/settings',
+            'text' => 'Registros de Salidas',
             'icon' => 'fas fa-fw fa-list',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Lista de Registros',
+                    'url' => 'admin/salidas',
+                    
+                ],
+               
+            ],
         ],
 
         ['header' => 'GESTION ROLES Y USUARIO'],
 
         [
             'text' => 'Usuarios',
-            'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-users',
             'classes'=>'bg-black text-white',
             'submenu' => [
@@ -467,7 +474,7 @@ return [
 
         ],
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

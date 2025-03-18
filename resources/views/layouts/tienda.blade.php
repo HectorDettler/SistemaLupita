@@ -34,7 +34,7 @@
                 @endauth
                 <a href="" class="cart-btn">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">5</span>
+                    <span class="cart-count"></span>
                 </a>
             </div>
         </nav>
@@ -48,7 +48,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Lupita Almacen de Mujeres</h3>
-                <p>Tu destino de moda favorito para encontrar las últimas tendencias en ropa y accesorios para mujeres.</p>
+                <p>Tu destino de moda favorito para encontrar las últimas tendencias en cosmeticos y accesorios para mujeres.</p>
             </div>
             <div class="footer-section">
                 <h3>Enlaces Rápidos</h3>

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Menu de Roles')
+@section('title', 'Menu de Salidas')
 
 @section('content_header')
-    <h1>Registro de Rol</h1>
+    <h1>Registro de Salida</h1>
     <hr>
 @stop
 
@@ -17,14 +17,25 @@
 
                 <div class="card-body">
 
-                    <form action="{{ url('/admin/roles/create') }}" method="post">
+                    <form action="{{ url('/admin/salidas/create') }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="name">Nombre del Rol</label>
-                                    <input type="text" class="form-control" value="{{ old('name') }}" name="name" required>
-                                    @error('name')
+                                    <label for="detalle_salida">Detalle</label>
+                                    <textarea class="form-control"  value="{{ old('detalle_salida') }}" name="detalle_salida" id="detalle_salida"></textarea>
+                                    @error('detalle_salida')
+                                    <small style"">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="importe_salida">Importe de salida</label>
+                                    <input type="text" class="form-control" value="{{ old('importe_salida') }}" name="importe_salida" id="importe_salida" step="0.01" required>
+                                    @error('importe_salida')
                                     <small style"">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -35,7 +46,7 @@
 
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn bg-gradient-primary"><i class="fas fa-save"></i> Registrar</button>
+                                        <button type="submit" class="btn bg-gradient-primary"><i class="fas fa-save"></i> Guardar Registro</button>
                                     </div>
                             </div>
 

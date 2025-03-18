@@ -31,14 +31,20 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="codigo_producto">Código del Producto <b>*</b></label>
+                                <label for="codigo_producto">Código del Producto <b>*</b></label>
+                                <div class="input-group">
+                                      
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-barcode"></i></span>
+                                    </div>
+
                                     <input type="text" class="form-control" value="{{ old('codigo_producto') }}" name="codigo_producto" id="codigo_producto" required>
                                     @error('codigo_producto')
                                     <small style"">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
+                            
                         </div>
                         
                         <!-- Fila 2: Descripción del Producto -->

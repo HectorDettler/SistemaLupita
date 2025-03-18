@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Menu de Usuarios')
+@section('title', 'Menu de Registros')
 
-@section('content_header')
-    <h1>Listado de Usuarios</h1>
+@section(section: 'content_header')
+    <h1>Lista de Registros</h1>
     <hr>
 @stop
 
@@ -12,50 +12,48 @@
         <div class="col-md-6">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Usuarios Registrados </h3>
+                    <h3 class="card-title">Registros </h3>
                     <div class="card-tools">
-                        <a href="{{ url('/admin/usuarios/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Agregar un Usuario</a>
+                        <a href="{{ url('/admin/salidas/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Nuevo Registro</a>
 
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <table id="tabla"class="table table-striped table-bordered table-hover">
+                    <table id="tabla" class="table table-striped table-bordered table-hover">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" style="text-align:center">Nro</th>
-                                <th scope="col">Nombre del Usuario</th>
-                                <th scope="col">Rol</th>
-                                <th scope="col">Email</th>
+                                <th scope="col" style="text-align:center">Detalle</th>
+                                <th scope="col" style="text-align:center">Importe</th>
                                 <th scope="col" style="text-align:center">Acciones</th>
                                 
                             </tr>  
                         </thead>
                         <tbody>
                             <?php $contador=1; ?>
-                            @foreach ( $usuarios as $usuario)
+                            @foreach ( $salidas as $salida)
                                 <tr>
                                     <td style="text-align:center">{{ $contador++ }}</td>
-                                    <td>{{ $usuario->name }}</td>
-                                    <td>{{ $usuario->roles->pluck('name')->implode(', ') }}</td>
-                                    <td>{{ $usuario->email }}</td>
+                                    <td style="text-align:center">{{ $salida->detalle_salida }}</td>
+                                    <td style="text-align:center">{{ $salida->importe_salida }}</td>
                                     <td style="text-align:center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-
-                                            <a href="{{ url('/admin/usuarios/'.$usuario->id) }}" class="btn bg-gradient-primary btn-sm" ><i class="fas fa-eye" ></i></a>
-                                            <a href="{{ url('/admin/usuarios/'.$usuario->id.'/edit') }}" class="btn bg-gradient-success btn-sm" ><i class="fas fa-pencil" ></i></a>
-                                            <form action="{{ url('/admin/usuarios', $usuario->id) }}" method="post" onclick="preguntar{{$usuario->id}}(event)"  id="miFormulario{{ $usuario->id }}">
+                                            <a href="{{ url('/admin/salidas/'.$salida->id) }}" class="btn bg-gradient-success btn-sm" ><i class="fas fa-eye" ></i></a>
+                                            
+                                            <form action="{{ url('/admin/salidas',$salida->id) }}" method="post" onclick="preguntar{{$salida->id}}(event)" id="miFormulario{{ $salida->id }}">
                                                 @csrf
                                                 @method ('DELETE')
-                                                <button type="submit" class="btn bg-gradient-danger btn-sm" style="border-radius: 0px 5px 5px 0px" ><i class="fas fa-trash"></i></button>
+                                                <button type="submit" class="btn bg-gradient-danger btn-sm" style="border-radius: 0px 5px 5px 0px"  ><i class="fas fa-trash"></i></button>
                                             </form>
                                             <script>
 
-                                                function preguntar{{$usuario->id}}(event){
+                                                function preguntar{{$salida->id}}(event){
                                                     event.preventDefault();
                                                     
+                                                    
                                                     Swal.fire({
-                                                        title:'¿Desea elminar este registro?',
+                                                        title:'¿Desea eliminar este registro?',
                                                         text:'',
                                                         icon:'question',
                                                         showDenyButton: true,
@@ -65,8 +63,7 @@
                                                         denyButtonText:'Cancelar'
                                                     }).then((result)=>{
                                                         if(result.isConfirmed){
-                                                            var form = $('#miFormulario{{$usuario->id}}');
-
+                                                            var form= $('#miFormulario{{$salida->id}}');
                                                             form.submit();
                                                         }
 
@@ -98,20 +95,19 @@
 @section('js')
     <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
 
-
     <script>
         $('#tabla').DataTable({
 
             "pageLength":5,
             "language":{
                 "emptyTable":"No hay informacion",
-                "info":"Mostrando _START_ a _END_ de _TOTAL_ Productos",
-                "infoEmpty":"Mostrando 0 a 0 de 0 Productos",
-                "infofiltered":"(Filtrado de _MAX_ total Productos)",
-                "infoEmpty":"Mostrando 0 a 0 de 0 Productos",
+                "info":"Mostrando _START_ a _END_ de _TOTAL_ Salidas",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Salidas",
+                "infofiltered":"(Filtrado de _MAX_ total Salidas)",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Salidas",
                 "infoPostFix":"",
                 "thousands":",",
-                "lengthMenu":"Mostrar _MENU_ Productos",
+                "lengthMenu":"Mostrar _MENU_ Salidas",
                 "loadingRecords":"Cargando...",
                 "processing":"Procesando...",
                 "search":"Buscador:",

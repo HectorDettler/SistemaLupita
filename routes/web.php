@@ -14,7 +14,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth');
 
@@ -77,10 +77,22 @@ Route::get('/admin/productos/{id}', [App\Http\Controllers\ProductoController::cl
 Route::get('/admin/productos/{id}/edit', [App\Http\Controllers\ProductoController::class, 'edit'])->name('admin.productos.edit')->middleware('auth');
 Route::put('/admin/productos/{id}', [App\Http\Controllers\ProductoController::class, 'update'])->name('admin.productos.update')->middleware('auth');
 Route::delete('/admin/productos/{id}', [App\Http\Controllers\ProductoController::class, 'destroy'])->name('admin.productos.destroy')->middleware('auth');
-
 Route::get('/admin/get-marcas/{categoriaId}', [AdminController::class, 'getMarcas']);
 
 
+
+//RUTAS PARA EL MODULO DE SALIDAS
+
+Route::get('/admin/salidas', [App\Http\Controllers\SalidaController::class, 'index'])->name('admin.salidas.index')->middleware('auth');
+Route::get('/admin/salidas/create', [App\Http\Controllers\SalidaController::class, 'create'])->name('admin.salidas.create')->middleware('auth');
+Route::post('/admin/salidas/create', [App\Http\Controllers\SalidaController::class, 'store'])->name('admin.salidas.store')->middleware('auth');
+Route::get('/admin/salidas/{id}', [App\Http\Controllers\SalidaController::class, 'show'])->name('admin.salidas.show')->middleware('auth');
+Route::delete('/admin/salidas/{id}', [App\Http\Controllers\SalidaController::class, 'destroy'])->name('admin.salidas.destroy')->middleware('auth');
+
+
+
+
+//RUTAS PARA EL MODULO DE TIENDA
 
 Route::get('/', [TiendaController::class, 'index'])->name('tienda.index');
 Route::get('/productos/{id}', [TiendaController::class, 'show'])->name('tienda.detalle');

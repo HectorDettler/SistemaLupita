@@ -49,7 +49,7 @@ class ProductoController extends Controller
             'stock_producto'=> 'required',
             'stock_min_producto'=> 'required',
             'stock_max_producto'=> 'required',
-            'precio_oferta_producto'=> 'required',
+            'precio_oferta_producto'=> 'nullable',
             'precio_venta_producto'=> 'required',
             'fecha_vencimiento_producto'=> 'required',
             
@@ -122,7 +122,7 @@ class ProductoController extends Controller
             'stock_producto'=> 'required',
             'stock_min_producto'=> 'required',
             'stock_max_producto'=> 'required',
-            'precio_oferta_producto'=> 'required',
+            'precio_oferta_producto'=> 'nullable',
             'precio_venta_producto'=> 'required',
             'fecha_vencimiento_producto'=> 'required',
             
