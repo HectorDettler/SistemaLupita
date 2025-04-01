@@ -11,7 +11,8 @@ class TiendaController extends Controller
 {
     public function index(){
 
-        $productos = Producto::all();
+        $productos = Producto::take(12)->get();
+        //$productos = Producto::orderBy('created_at', 'desc')->take(12)->get(); ->por si quiero traer los productos mas actuales.
         $categorias = Categoria::all();
         $marcas = Marca::all();
 

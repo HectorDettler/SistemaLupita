@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Menu de Salidas')
+@section('title', 'Menu de Compras')
 
 @section(section: 'content_header')
     <h1>Lista de Registros</h1>
@@ -12,9 +12,9 @@
         <div class="col-md-6">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Salidas </h3>
+                    <h3 class="card-title">Compras </h3>
                     <div class="card-tools">
-                        <a href="{{ url('/admin/salidas/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Nuevo Registro</a>
+                        <a href="{{ url('/admin/compras/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Nuevo Registro</a>
 
                     </div>
                 </div>
@@ -32,23 +32,23 @@
                         </thead>
                         <tbody>
                             <?php $contador=1; ?>
-                            @foreach ( $salidas as $salida)
+                            @foreach ( $compras as $compra)
                                 <tr>
                                     <td style="text-align:center">{{ $contador++ }}</td>
-                                    <td style="text-align:center">{{ $salida->detalle_salida }}</td>
-                                    <td style="text-align:center">{{ $salida->importe_salida }}</td>
+                                    <td style="text-align:center">{{ $compra->detalle_compra }}</td>
+                                    <td style="text-align:center">{{ $compra->importe_compra }}</td>
                                     <td style="text-align:center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ url('/admin/salidas/'.$salida->id) }}" class="btn bg-gradient-success btn-sm" ><i class="fas fa-eye" ></i></a>
+                                            <a href="{{ url('/admin/compras/'.$compra->id) }}" class="btn bg-gradient-success btn-sm" ><i class="fas fa-eye" ></i></a>
                                             
-                                            <form action="{{ url('/admin/salidas',$salida->id) }}" method="post" onclick="preguntar{{$salida->id}}(event)" id="miFormulario{{ $salida->id }}">
+                                            <form action="{{ url('/admin/compras',$compra->id) }}" method="post" onclick="preguntar{{$compra->id}}(event)" id="miFormulario{{ $compra->id }}">
                                                 @csrf
                                                 @method ('DELETE')
                                                 <button type="submit" class="btn bg-gradient-danger btn-sm" style="border-radius: 0px 5px 5px 0px"  ><i class="fas fa-trash"></i></button>
                                             </form>
                                             <script>
 
-                                                function preguntar{{$salida->id}}(event){
+                                                function preguntar{{$compra->id}}(event){
                                                     event.preventDefault();
                                                     
                                                     
@@ -63,7 +63,7 @@
                                                         denyButtonText:'Cancelar'
                                                     }).then((result)=>{
                                                         if(result.isConfirmed){
-                                                            var form= $('#miFormulario{{$salida->id}}');
+                                                            var form= $('#miFormulario{{$compra->id}}');
                                                             form.submit();
                                                         }
 

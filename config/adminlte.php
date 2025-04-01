@@ -375,13 +375,18 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'Registros de Salidas',
+            'text' => 'Registros Generales',
             'icon' => 'fas fa-fw fa-list',
             'classes'=>'bg-black text-white',
             'submenu' => [
                 [
-                    'text' => 'Lista de Registros',
+                    'text' => 'Registros de Salidas',
                     'url' => 'admin/salidas',
+                    
+                ],
+                [
+                    'text' => 'Registros de Compras',
+                    'url' => 'admin/compras',
                     
                 ],
                
@@ -411,6 +416,19 @@ return [
                 [
                     'text' => 'Listado de Roles',
                     'url' => 'admin/roles',
+                    
+                ],
+               
+            ],
+        ],
+        [
+            'text' => 'Clientes',
+            'icon' => 'fas fa-fw fa-id-card',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Clientes',
+                    'url' => 'admin/clientes',
                     
                 ],
                

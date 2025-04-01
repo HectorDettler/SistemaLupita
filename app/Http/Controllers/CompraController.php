@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Salida;
+use App\Models\Compra;
 use Illuminate\Http\Request;
 
-class SalidaController extends Controller
+class CompraController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $salidas=Salida::all();
-        return view("admin.salidas.index",compact("salidas"));
+        $compras=Compra::all();
+        return view("admin.compras.index",compact("compras"));
     }
 
     /**
@@ -21,8 +21,7 @@ class SalidaController extends Controller
      */
     public function create()
     {
-        
-        return view("admin.salidas.create");
+        return view("admin.compras.create");
     }
 
     /**
@@ -31,18 +30,18 @@ class SalidaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'detalle_salida' => 'required',
-            'importe_salida' => 'required',
+            'detalle_compra' => 'required',
+            'importe_compra' => 'required',
             
         ]);
 
-        $salida= new Salida();
+        $compra= new Compra();
         
-        $salida->detalle_salida=$request->detalle_salida;
-        $salida->importe_salida=$request->importe_salida;
-        $salida->save();
+        $compra->detalle_compra=$request->detalle_compra;
+        $compra->importe_compra=$request->importe_compra;
+        $compra->save();
 
-        return redirect()->route('admin.salidas.index')
+        return redirect()->route('admin.compras.index')
         ->with("mensaje","Registro Ingresado Correctamente");
     }
 
@@ -51,14 +50,14 @@ class SalidaController extends Controller
      */
     public function show($id)
     {
-        $salida=Salida::find($id);
-        return view("admin.salidas.show",compact("salida"));
+        $compra=Compra::find($id);
+        return view("admin.compras.show",compact("compra"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Salida $salida)
+    public function edit(Compra $compra)
     {
         //
     }
@@ -66,7 +65,7 @@ class SalidaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Salida $salida)
+    public function update(Request $request, Compra $compra)
     {
         //
     }
@@ -76,9 +75,9 @@ class SalidaController extends Controller
      */
     public function destroy($id)
     {
-        Salida::destroy($id);
+        Compra::destroy($id);
 
-        return redirect()->route("admin.salidas.index")
+        return redirect()->route("admin.compras.index")
         ->with('mensaje', 'Registro Eliminado Correctamente');
     }
 }

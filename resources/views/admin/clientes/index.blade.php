@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Menu de Salidas')
+@section('title', 'Menu de Clientes')
 
-@section(section: 'content_header')
-    <h1>Lista de Registros</h1>
+@section('content_header')
+    <h1>Lista de Clientes</h1>
     <hr>
 @stop
 
@@ -12,9 +12,9 @@
         <div class="col-md-6">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Salidas </h3>
+                    <h3 class="card-title">Clientes Registradas </h3>
                     <div class="card-tools">
-                        <a href="{{ url('/admin/salidas/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Nuevo Registro</a>
+                        <a href="{{ url('/admin/clientes/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Agregar un Cliente</a>
 
                     </div>
                 </div>
@@ -24,31 +24,31 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" style="text-align:center">Nro</th>
-                                <th scope="col" style="text-align:center">Detalle</th>
-                                <th scope="col" style="text-align:center">Importe</th>
+                                <th scope="col" style="text-align:center">Nombre</th>
+                                <th scope="col" style="text-align:center">Estado</th>
                                 <th scope="col" style="text-align:center">Acciones</th>
-                                
                             </tr>  
                         </thead>
                         <tbody>
                             <?php $contador=1; ?>
-                            @foreach ( $salidas as $salida)
+                            @foreach ( $clientes as $cliente)
                                 <tr>
                                     <td style="text-align:center">{{ $contador++ }}</td>
-                                    <td style="text-align:center">{{ $salida->detalle_salida }}</td>
-                                    <td style="text-align:center">{{ $salida->importe_salida }}</td>
+                                    <td style="text-align:center">{{ $cliente->nombre_cliente }}</td>
+                                    <td style="text-align:center">{{ $cliente->aprobado_cliente ? 'Activo' : 'Inactivo' }}</td>
                                     <td style="text-align:center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ url('/admin/salidas/'.$salida->id) }}" class="btn bg-gradient-success btn-sm" ><i class="fas fa-eye" ></i></a>
                                             
-                                            <form action="{{ url('/admin/salidas',$salida->id) }}" method="post" onclick="preguntar{{$salida->id}}(event)" id="miFormulario{{ $salida->id }}">
+                                            <a href="{{ url('/admin/clientes/'.$cliente->id) }}" class="btn bg-gradient-primary btn-sm" ><i class="fas fa-eye" ></i></a>
+                                            <a href="{{ url('/admin/clientes/'.$cliente->id.'/edit') }}" class="btn bg-gradient-success btn-sm" ><i class="fas fa-pencil" ></i></a>
+                                            <form action="{{ url('/admin/clientes',$cliente->id) }}" method="post" onclick="preguntar{{$cliente->id}}(event)" id="miFormulario{{ $cliente->id }}">
                                                 @csrf
                                                 @method ('DELETE')
                                                 <button type="submit" class="btn bg-gradient-danger btn-sm" style="border-radius: 0px 5px 5px 0px"  ><i class="fas fa-trash"></i></button>
                                             </form>
                                             <script>
 
-                                                function preguntar{{$salida->id}}(event){
+                                                function preguntar{{$cliente->id}}(event){
                                                     event.preventDefault();
                                                     
                                                     
@@ -63,7 +63,7 @@
                                                         denyButtonText:'Cancelar'
                                                     }).then((result)=>{
                                                         if(result.isConfirmed){
-                                                            var form= $('#miFormulario{{$salida->id}}');
+                                                            var form= $('#miFormulario{{$cliente->id}}');
                                                             form.submit();
                                                         }
 
@@ -95,19 +95,20 @@
 @section('js')
     <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
 
+
     <script>
         $('#tabla').DataTable({
 
             "pageLength":5,
             "language":{
                 "emptyTable":"No hay informacion",
-                "info":"Mostrando _START_ a _END_ de _TOTAL_ Salidas",
-                "infoEmpty":"Mostrando 0 a 0 de 0 Salidas",
-                "infofiltered":"(Filtrado de _MAX_ total Salidas)",
-                "infoEmpty":"Mostrando 0 a 0 de 0 Salidas",
+                "info":"Mostrando _START_ a _END_ de _TOTAL_ Productos",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Productos",
+                "infofiltered":"(Filtrado de _MAX_ total Productos)",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Productos",
                 "infoPostFix":"",
                 "thousands":",",
-                "lengthMenu":"Mostrar _MENU_ Salidas",
+                "lengthMenu":"Mostrar _MENU_ Productos",
                 "loadingRecords":"Cargando...",
                 "processing":"Procesando...",
                 "search":"Buscador:",

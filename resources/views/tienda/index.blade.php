@@ -19,7 +19,7 @@
             <div class="productos-grid">
             @foreach($productos as $producto)
                 <div class="producto-card">
-                    <img src="https://via.placeholder.com/300x400" alt="Vestido Floral">
+                    <img src="{{ asset('storage/'.$producto->imagen_producto) }}"  id="imagen-principal" alt="imagen">
                     <div class="producto-info">
                         <h3>{{ $producto->nombre_producto}}</h3>
                         <p class="precio">$59.99</p>
