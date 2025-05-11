@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Menu de Categorias')
+@section('title', 'Menu de Cliente')
 
 @section('content_header')
-    <h1>Registro de Categorias</h1>
+    <h1>Registro de Cliente</h1>
     <hr>
 @stop
 

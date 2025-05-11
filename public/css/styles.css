@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background: linear-gradient(135deg, #ffe6f0 0%, #fff5f8 100%);
@@ -128,6 +128,42 @@ main {
     color: white;
 }
 
+.hero {
+    height: 500px; /* Altura fija del carrusel */
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Oculta las partes de la imagen que sobresalgan */
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       
+    object-position: center;
+    display: block;
+}
+
+
+
+
 .hero-content {
     max-width: 800px;
     padding: 2rem;
@@ -137,6 +173,20 @@ main {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .cta-button {
     display: inline-block;
@@ -175,11 +225,16 @@ main {
 }
 
 .producto-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye elementos equitativamente */
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(130, 38, 89, 0.15);
+    transition: all 0.3s ease-in-out;
+    border: 2px solid rgba(214, 51, 132, 0.3);
+    height: 100%; 
 }
 
 .producto-card:hover {
@@ -189,9 +244,66 @@ main {
 
 .producto-card img {
     width: 100%;
-    height: auto;
+    height: 200px; /* Ajusta este valor según el tamaño deseado */
     object-fit: cover;
+    border-bottom: 3px solid #D63384; /* Línea decorativa debajo de la imagen */
 }
+
+.producto-card .card-body {
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.producto-card .card-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: black;
+    
+}
+
+.producto-card .card-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #D63384; /* Fucsia elegante */
+    background: linear-gradient(90deg, rgba(214, 51, 132, 0.2), rgba(214, 51, 132, 0.5));
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    display: inline-block;
+   
+    max-width: 180px; /* Limita el largo máximo del texto */
+    text-align: center; /* Centra el texto dentro del .card-text */
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.producto-card .btn {
+    background: #D63384;
+    color: white;
+    font-weight: bold;
+    
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    width: auto;
+    max-width: 180px; /* Limita el largo máximo del botón */
+    white-space: nowrap;
+    overflow: hidden;
+    display: block; /* Asegura que el botón es un bloque */
+    margin: 0 auto; /* Centra el botón dentro de su contenedor */
+    margin-top: 5px;
+}
+
+.producto-card .btn:hover {
+    background: #822659;
+    color: white;
+}
+
+
+
 
 .producto-info {
     padding: 1.5rem;
@@ -285,6 +397,67 @@ main {
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
+
+
+
+
+
+
+.sobre-nosotros {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 40px;
+    background-color: #FFEFF5;
+}
+
+.img-fondo {
+
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(70%) saturate(120%);
+    transition: transform 1s ease, filter 0.5s ease;
+    will-change: transform;
+}
+
+.sobre-nosotros .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    z-index: 2;
+}
+
+.sobre-nosotros::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.0); /* capa oscura encima para dar contraste */
+    z-index: 1;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-container {
@@ -302,3 +475,5 @@ main {
         font-size: 2rem;
     }
 }
+
+

@@ -175,6 +175,23 @@ class ProductoController extends Controller
 
     }
 
+
+    public function detalle($id)
+    {
+    $producto = Producto::findOrFail($id);
+    return view('tienda.detalle', compact('producto'));
+    }
+
+
+    public function ofertas()
+    {
+        $productos = Producto::whereNotNull('precio_oferta_producto')->get();
+        return view('tienda/oferta', compact('productos'));
+    }
+
+
+
+
     /**
      * Remove the specified resource from storage.
      */

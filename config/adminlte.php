@@ -366,13 +366,29 @@ return [
         ['header' => 'GESTION VENTAS'],
         [
             'text' => 'Caja',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-shopping-cart',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Listado de arqueos',
+                    'url' => 'admin/arqueos',
+                    
+                ],
+               
+            ],
         ],
         [
             'text' => 'Venta',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-money-bill',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Ventas',
+                    'url' => 'admin/ventas',
+                    
+                ],
+               
+            ],
         ],
         [
             'text' => 'Registros Generales',

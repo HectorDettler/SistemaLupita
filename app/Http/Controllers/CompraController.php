@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compra;
+
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -40,6 +41,9 @@ class CompraController extends Controller
         $compra->detalle_compra=$request->detalle_compra;
         $compra->importe_compra=$request->importe_compra;
         $compra->save();
+
+
+        
 
         return redirect()->route('admin.compras.index')
         ->with("mensaje","Registro Ingresado Correctamente");

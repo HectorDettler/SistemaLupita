@@ -3,7 +3,7 @@
 @section('title', 'Menu de Salidas')
 
 @section(section: 'content_header')
-    <h1>Lista de Registros</h1>
+    <h1>Registros de Salidas</h1>
     <hr>
 @stop
 
@@ -14,8 +14,13 @@
                 <div class="card-header">
                     <h3 class="card-title">Salidas </h3>
                     <div class="card-tools">
-                        <a href="{{ url('/admin/salidas/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Nuevo Registro</a>
 
+                        @if($arqueo_abierto)
+                            <a href="{{ url('/admin/salidas/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Nuevo Registro</a>
+                        @else
+                            <a href="{{ url('/admin/arqueos/create') }}" class="btn bg-gradient-danger"><i class="fa fa-plus"></i> Abrir Caja</a>
+                        @endif
+                        
                     </div>
                 </div>
 

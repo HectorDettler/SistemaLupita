@@ -7,9 +7,7 @@ use App\Http\Controllers\TiendaController;
 use Illuminate\Support\Facades\Auth;
 
 
-Route::get('/', function () {
-    return view('tienda.index'); // O cualquier vista de tu tienda.
-});
+
 
 
 Auth::routes();
@@ -110,7 +108,61 @@ Route::put('/admin/clientes/{id}', [App\Http\Controllers\ClienteController::clas
 Route::delete('/admin/clientes/{id}', [App\Http\Controllers\ClienteController::class, 'destroy'])->name('admin.clientes.destroy')->middleware('auth');
 
 
+
+//RUTAS PARA EL MODULO DE VENTAS
+
+Route::get('/admin/ventas', [App\Http\Controllers\VentaController::class, 'index'])->name('admin.ventas.index')->middleware('auth');
+Route::get('/admin/ventas/create', [App\Http\Controllers\VentaController::class, 'create'])->name('admin.ventas.create')->middleware('auth');
+Route::post('/admin/ventas/create', [App\Http\Controllers\VentaController::class, 'store'])->name('admin.ventas.store')->middleware('auth');
+Route::get('/admin/ventas/{id}', [App\Http\Controllers\VentaController::class, 'show'])->name('admin.ventas.show')->middleware('auth');
+Route::get('/admin/ventas/pdf/{id}', [App\Http\Controllers\VentaController::class, 'pdf'])->name('admin.ventas.pdf')->middleware('auth');
+
+Route::get('/admin/ventas/{id}/edit', [App\Http\Controllers\VentaController::class, 'edit'])->name('admin.ventas.edit')->middleware('auth');
+Route::put('/admin/ventas/{id}', [App\Http\Controllers\VentaController::class, 'update'])->name('admin.ventas.update')->middleware('auth');
+Route::delete('/admin/ventas/{id}', [App\Http\Controllers\VentaController::class, 'destroy'])->name('admin.ventas.destroy')->middleware('auth');
+
+
+
+//RUTAS PARA LAS VENTAS TEMPORALES
+
+Route::post('/admin/ventas/create/tmp', [App\Http\Controllers\TmpVentaController::class, 'tmp_ventas'])->name('admin.ventas.tmp_ventas')->middleware('auth');
+Route::delete('/admin/ventas/create/tmp/{id}', [App\Http\Controllers\TmpVentaController::class, 'destroy'])->name('admin.ventas.tmp_ventas.destroy')->middleware('auth');
+Route::post('/admin/ventas/create/tmp/{id}/aplicar-oferta', [App\Http\Controllers\TmpVentaController::class, 'aplicarOferta'])->name('tmpventa.aplicarOferta');
+
+//RUTAS PARA EL DETALLE DE VENTAS
+
+Route::post('/admin/ventas/detalle/create', [App\Http\Controllers\DetalleVentaController::class, 'store'])->name('admin.detalles.ventas.store')->middleware('auth');
+Route::delete('/admin/ventas/detalle/{id}', [App\Http\Controllers\DetalleVentaController::class, 'destroy'])->name('admin.detalles.ventas.destroy')->middleware('auth');
+
+//RUTAS PARA EL MODULO DE ARQUEOS
+
+Route::get('/admin/arqueos', [App\Http\Controllers\ArqueoController::class, 'index'])->name('admin.arqueos.index')->middleware('auth');
+Route::get('/admin/arqueos/create', [App\Http\Controllers\ArqueoController::class, 'create'])->name('admin.arqueos.create')->middleware('auth');
+Route::post('/admin/arqueos/create', [App\Http\Controllers\ArqueoController::class, 'store'])->name('admin.arqueos.store')->middleware('auth');
+Route::get('/admin/arqueos/{id}', [App\Http\Controllers\ArqueoController::class, 'show'])->name('admin.arqueos.show')->middleware('auth');
+Route::get('/admin/arqueos/{id}/edit', [App\Http\Controllers\ArqueoController::class, 'edit'])->name('admin.arqueos.edit')->middleware('auth');
+Route::get('/admin/arqueos/{id}/ingreso_egreso', [App\Http\Controllers\ArqueoController::class, 'ingresoegreso'])->name('admin.arqueos.ingresoegreso')->middleware('auth');
+Route::post('/admin/arqueos/create_ingreso_egreso', [App\Http\Controllers\ArqueoController::class, 'store_ingreso_egreso'])->name('admin.arqueos.storeingresoegreso')->middleware('auth');
+Route::put('/admin/arqueos/{id}', [App\Http\Controllers\ArqueoController::class, 'update'])->name('admin.arqueos.update')->middleware('auth');
+Route::delete('/admin/arqueos/{id}', [App\Http\Controllers\ArqueoController::class, 'destroy'])->name('admin.arqueos.destroy')->middleware('auth');
+Route::get('/admin/arqueos/{id}/cierre', [App\Http\Controllers\ArqueoController::class, 'cierre'])->name('admin.arqueos.cierre')->middleware('auth');
+Route::post('/admin/arqueos/create_cierre', [App\Http\Controllers\ArqueoController::class, 'store_cierre'])->name('admin.arqueos.storecierre')->middleware('auth');
+
+
+
+
+
+
+
+
+
 //RUTAS PARA EL MODULO DE TIENDA
 
 Route::get('/', [TiendaController::class, 'index'])->name('tienda.index');
 Route::get('/productos/{id}', [TiendaController::class, 'show'])->name('tienda.detalle');
+
+
+//Route::get('/productos/{id}', [ProductoController::class, 'detalle'])->name('tienda.productos.detalle');
+Route::get('/oferta', [ProductoController::class, 'ofertas'])->name('ofertas');
+Route::get('/productos', [TiendaController::class, 'productos'])->name('productos');
+//Route::get('/tienda', [TiendaController::class, 'index'])->name('tienda.index');

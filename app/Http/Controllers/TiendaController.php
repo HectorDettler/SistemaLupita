@@ -19,6 +19,41 @@ class TiendaController extends Controller
         return view("tienda.index", compact('productos','categorias', 'marcas'));
 
     }
+
+
+
+    public function productos(Request $request)
+    {
+        // Cargar categorías y marcas para los filtros
+        $categorias = Categoria::all();
+        $marcas = Marca::all();
+
+        // Crear la consulta base
+        $query = Producto::query();
+
+        // Filtrar por marca (id_marca)
+        if ($request->filled('marca_id')) {
+            $query->where('id_marca', $request->marca_id);
+        }
+
+        // Filtrar por categoría (id_categoria)
+        if ($request->filled('categoria_id')) {
+            $query->where('id_categoria', $request->categoria_id);
+        }
+
+        // Filtrar por nombre de producto (búsqueda)
+        if ($request->filled('query')) {
+            $query->where('nombre_producto', 'LIKE', '%' . $request->query('query') . '%');
+        }
+
+        // Obtener productos filtrados con paginación
+        $productos = $query->paginate(12);
+
+        return view('tienda.productos', compact('productos', 'categorias', 'marcas'));
+    }
+
+
+    
     
     public function show($id)
     {

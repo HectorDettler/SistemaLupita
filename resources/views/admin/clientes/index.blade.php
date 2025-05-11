@@ -12,7 +12,7 @@
         <div class="col-md-6">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Clientes Registradas </h3>
+                    <h3 class="card-title">Clientes Registrados </h3>
                     <div class="card-tools">
                         <a href="{{ url('/admin/clientes/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Agregar un Cliente</a>
 
@@ -35,7 +35,13 @@
                                 <tr>
                                     <td style="text-align:center">{{ $contador++ }}</td>
                                     <td style="text-align:center">{{ $cliente->nombre_cliente }}</td>
-                                    <td style="text-align:center">{{ $cliente->aprobado_cliente ? 'Activo' : 'Inactivo' }}</td>
+                                    <td style="text-align:center"><p>
+                                        @if($cliente->aprobado_cliente)
+                                            <span class="badge bg-success fs-5 py-2 px-3" >Activo</span>
+                                        @else
+                                            <span class="badge bg-danger fs-5 py-2 px-3">Inactivo</span>
+                                        @endif
+                                    </p></td>
                                     <td style="text-align:center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             
@@ -102,13 +108,13 @@
             "pageLength":5,
             "language":{
                 "emptyTable":"No hay informacion",
-                "info":"Mostrando _START_ a _END_ de _TOTAL_ Productos",
-                "infoEmpty":"Mostrando 0 a 0 de 0 Productos",
-                "infofiltered":"(Filtrado de _MAX_ total Productos)",
-                "infoEmpty":"Mostrando 0 a 0 de 0 Productos",
+                "info":"Mostrando _START_ a _END_ de _TOTAL_ Clientes",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Clientes",
+                "infofiltered":"(Filtrado de _MAX_ total Clientes)",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Clientes",
                 "infoPostFix":"",
                 "thousands":",",
-                "lengthMenu":"Mostrar _MENU_ Productos",
+                "lengthMenu":"Mostrar _MENU_ Clientes",
                 "loadingRecords":"Cargando...",
                 "processing":"Procesando...",
                 "search":"Buscador:",

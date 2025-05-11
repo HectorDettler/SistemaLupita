@@ -3,7 +3,7 @@
 @section('title', 'Menu de Compras')
 
 @section(section: 'content_header')
-    <h1>Lista de Registros</h1>
+    <h1>Registros de Compra</h1>
     <hr>
 @stop
 
@@ -101,13 +101,13 @@
             "pageLength":5,
             "language":{
                 "emptyTable":"No hay informacion",
-                "info":"Mostrando _START_ a _END_ de _TOTAL_ Salidas",
-                "infoEmpty":"Mostrando 0 a 0 de 0 Salidas",
-                "infofiltered":"(Filtrado de _MAX_ total Salidas)",
-                "infoEmpty":"Mostrando 0 a 0 de 0 Salidas",
+                "info":"Mostrando _START_ a _END_ de _TOTAL_ Compras",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Compras",
+                "infofiltered":"(Filtrado de _MAX_ total Compras)",
+                "infoEmpty":"Mostrando 0 a 0 de 0 Compras",
                 "infoPostFix":"",
                 "thousands":",",
-                "lengthMenu":"Mostrar _MENU_ Salidas",
+                "lengthMenu":"Mostrar _MENU_ Compras",
                 "loadingRecords":"Cargando...",
                 "processing":"Procesando...",
                 "search":"Buscador:",
