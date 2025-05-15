@@ -15,8 +15,11 @@
                     <h3 class="card-title">Arqueos Registrados </h3>
                     <div class="card-tools">
 
+
+                        <a href="{{ url('/admin/arqueos/reporte') }}" target="_blank" class="btn bg-gradient-success"><i class="fa fa-file-pdf"></i> Crear Reporte</a>
+
+
                         @if($arqueoAbierto)
-                        
                         
                         @else
                             <a href="{{ url('/admin/arqueos/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Crear Arqueo</a>

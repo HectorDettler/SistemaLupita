@@ -15,6 +15,7 @@
                     <h3 class="card-title">Clientes Registrados </h3>
                     <div class="card-tools">
                         <a href="{{ url('/admin/clientes/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Agregar un Cliente</a>
+                        <a href="{{ url('/admin/clientes/reporte') }}" target="_blank" class="btn bg-gradient-success"><i class="fa fa-file-pdf"></i> Crear Reporte</a>
 
                     </div>
                 </div>

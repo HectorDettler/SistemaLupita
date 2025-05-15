@@ -14,6 +14,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use NumberToWords\NumberToWords;
 use NumberFormatter;
 
+
 class VentaController extends Controller
 {
     /**
@@ -136,6 +137,15 @@ class VentaController extends Controller
 
     }
 
+    public function reporte(){
+
+        $ventas=Venta::all();
+
+        $pdf= PDF::loadView('admin.ventas.reporte',compact('ventas'));
+        return $pdf->stream();
+        
+    }
+
     
 
     /**
@@ -214,4 +224,6 @@ class VentaController extends Controller
         return redirect ()->route('admin.ventas.index')
         ->with('mensaje','Venta Eliminada Correctamente');
     }
+
+    
 }

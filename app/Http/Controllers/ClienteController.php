@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Cliente;
 
 class ClienteController extends Controller
@@ -103,6 +104,15 @@ class ClienteController extends Controller
     {
         Cliente::destroy($id);
         return redirect()->route('admin.clientes.index')->with("mensaje", "Cliente Eliminado Correctamente");
+
+    }
+
+    public function reporte (){
+
+
+        $clientes= Cliente::all();
+        $pdf= PDF::loadView('admin.clientes.reporte',compact('clientes'));
+        return $pdf->stream();
 
     }
 }

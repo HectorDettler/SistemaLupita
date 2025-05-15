@@ -426,12 +426,25 @@ return [
         ],
         [
             'text' => 'Roles',
-            'icon' => 'fas fa-fw fa-user-check',
+            'icon' => 'fas fa-fw fa-user',
             'classes'=>'bg-black text-white',
             'submenu' => [
                 [
                     'text' => 'Listado de Roles',
                     'url' => 'admin/roles',
+                    
+                ],
+               
+            ],
+        ],
+        [
+            'text' => 'Permisos',
+            'icon' => 'fas fa-fw fa-user-lock',
+            'classes'=>'bg-black text-white',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Permisos',
+                    'url' => 'admin/permisos',
                     
                 ],
                

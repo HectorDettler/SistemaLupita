@@ -15,7 +15,8 @@
                     <h3 class="card-title">Productos Registrados </h3>
                     <div class="card-tools">
                         <a href="{{ url('/admin/productos/create') }}" class="btn bg-gradient-primary"><i class="fa fa-plus"></i> Agregar un Producto</a>
-
+                        <a href="{{ url('/admin/productos/reporte') }}" target="_blank" class="btn bg-gradient-success"><i class="fa fa-file-pdf"></i> Crear Reporte</a>
+                        
                     </div>
                 </div>
 

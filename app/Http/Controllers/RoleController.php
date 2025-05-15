@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 
 class RoleController extends Controller
@@ -96,4 +97,30 @@ class RoleController extends Controller
         return redirect()->route("admin.roles.index")
         ->with('mensaje', 'Rol Eliminado Correctamente');
     }
+
+    public function asignar($id){
+
+        $rol=Role::find($id);
+        $permisos= Permission::all();
+
+        return view('admin.roles.asignar',compact('permisos','rol'));
+    }
+
+    public function update_asignar(Request $request, $id){
+
+
+       
+
+        $rol= Role::find($id);
+
+        $rol->permissions()->sync($request->input('permisos'));
+
+        return redirect()->back()
+        ->with('mensaje', 'Permisos Asignados Correctamente Correctamente');
+
+
+
+    }
+
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Arqueo;
 use App\Models\MovimientoCaja;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ArqueoController extends Controller
 {
@@ -115,11 +116,11 @@ class ArqueoController extends Controller
 
     public function cierre ($id){
 
-        $arqueo=Arqueo::find($id);
+        $arqueos=Arqueo::find($id);
 
 
 
-        return view ('admin.arqueos.cierre', compact('arqueo'));
+        return view ('admin.arqueos.cierre', compact('arqueos'));
 
     }
 
@@ -173,5 +174,25 @@ class ArqueoController extends Controller
 
         return redirect()->route("admin.arqueos.index")
         ->with('mensaje', 'Arqueo Eliminado Correctamente');
+    }
+
+
+    public function reporte (){
+
+        $arqueos=Arqueo::with('movimientos')->get();
+
+        foreach($arqueos as $arqueo){
+            
+            $arqueo->total_ingreso = $arqueo->movimientos->where('tipo_movimiento','INGRESO')->sum('monto_movimiento');
+            $arqueo->total_engreso = $arqueo->movimientos->where('tipo_movimiento','EGRESO')->sum('monto_movimiento');
+
+
+
+        }   
+
+        $pdf= PDF::loadView('admin.arqueos.reporte',compact('arqueos'))
+                    ->setPaper('lettler','landscape');
+        return $pdf->stream();
+
     }
 }

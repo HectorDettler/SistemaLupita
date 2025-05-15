@@ -7,6 +7,7 @@ use App\Models\Categoria;
 use App\Models\Marca;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProductoController extends Controller
 {
@@ -187,6 +188,17 @@ class ProductoController extends Controller
     {
         $productos = Producto::whereNotNull('precio_oferta_producto')->get();
         return view('tienda/oferta', compact('productos'));
+    }
+
+
+    public function reporte (){
+
+
+        $productos= Producto::all();
+        $pdf= PDF::loadView('admin.productos.reporte',compact('productos'))
+                    ->setPaper('lettler','landscape');
+        return $pdf->stream();
+
     }
 
 
